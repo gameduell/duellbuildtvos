@@ -1,6 +1,6 @@
 
 ifeq ("$(ARCHS)","normal")
-	ARCHS = arm64 i386
+	ARCHS = arm64 x86_64
 endif
 
 HAXE_BUILDS := $(ARCHS:%=build-haxe-%)
@@ -53,11 +53,11 @@ LIB_DEST := $(DEBUG)/libHaxeApplication.a
 
 export HXCPP_COMPILE_THREADS := 2
 
-build-haxe-i386:
+build-haxe-x86_64:
 	@echo "Haxe simulator build CONFIG : $(CONFIG)"
 	haxe Build_$(CONFIG_FILE)_simulator.hxml
-	cd build/$(CONFIG); haxelib run hxcpp Build.xml -tvos -Dsimulator -DHXCPP_CPP11 $(DEF_DEBUG) $(HXCPP_CLANG) ::foreach (PLATFORM.HXCPP_COMPILATION_ARGS)::::__current__:: ::end::
-	cp $(LIB_BASE).appletvos.a ../lib/i386$(LIB_DEST)
+	cd build/$(CONFIG); haxelib run hxcpp Build.xml -Dappletvsim -Dsimulator -DHXCPP_M64 -DHXCPP_CPP11 $(DEF_DEBUG) $(HXCPP_CLANG) ::foreach (PLATFORM.HXCPP_COMPILATION_ARGS)::::__current__:: ::end::
+	cp $(LIB_BASE).appletvsim-64.a ../lib/x86_64$(LIB_DEST)
 	touch ../Classes/Main.mm
 	touch ../Classes/DUELLAppDelegate.m
 

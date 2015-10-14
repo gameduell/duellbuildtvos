@@ -226,7 +226,7 @@ class PlatformBuild
 
 		Configuration.getData().PLATFORM.SIMULATOR = true;
 		Configuration.addParsingDefine("simulator");
-		Configuration.getData().PLATFORM.ARCHS = ["i386"];
+		Configuration.getData().PLATFORM.ARCHS = ["x86_64"];
 	}
 
 	private function convertParsingDefinesToCompilationDefines()
@@ -449,16 +449,15 @@ class PlatformBuild
 
 	private function handleNDLLs()
 	{
-		for (archID in 0...4)
+		for (archID in 0...2)
 		{
-			var arch = ["arm64", "i386"][archID];
+			var arch = ["arm64", "x86_64"][archID];
 
             if (Configuration.getData().PLATFORM.ARCHS.indexOf(arch) == -1)
                 continue;
 
-
 			var argsForBuild = [["-Dappletvos", "-Dtvos", "-DHXCPP_ARM64", "-DHXCPP_M64"],
-								["-Dappletvsim", "-Dtvos"]][archID];
+								["-Dappletvsim", "-Dtvos", "-DHXCPP_M64"]][archID];
 
             var sdkExt = "";
 
@@ -476,7 +475,7 @@ class PlatformBuild
 				argsForBuild.push("-Ddebug");
 			}
 
-            var archExt = [ "-64.a", ".a" ][archID];
+            var archExt = [ "-64.a", "-64.a" ][archID];
 
             var libExt = '.$sdkExt$archExt';
 
