@@ -1,0 +1,6 @@
+launch
+::PLATFORM.OUTPUT_FILE::
+--devicetypeid
+com.apple.CoreSimulator.SimDeviceType.::PLATFORM.SIM_DEVICE::, ::PLATFORM.SIM_OS::
+--timeout
+300
