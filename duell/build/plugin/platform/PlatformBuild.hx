@@ -184,7 +184,7 @@ class PlatformBuild
 		duellBuildTVOSPath = DuellLib.getDuellLib("duellbuildtvos").getPath();
 
 		Configuration.getData().PLATFORM.IOS_VERSION = XCodeHelper.getIOSVersion();
-		Configuration.getData().PLATFORM.OUTPUT_FILE = Path.join([targetDirectory, "build", (Configuration.getData().PLATFORM.DEBUG?"Debug":"Release") + (Configuration.getData().PLATFORM.SIMULATOR?"-appletvsim":"-appletvos"), Configuration.getData().APP.FILE + ".app"]);
+		Configuration.getData().PLATFORM.OUTPUT_FILE = Path.join([targetDirectory, "build", (Configuration.getData().PLATFORM.DEBUG?"Debug":"Release") + (Configuration.getData().PLATFORM.SIMULATOR?"-appletvsimulator":"-appletvos"), Configuration.getData().APP.FILE + ".app"]);
 	}
 
 	private function checkArguments()
