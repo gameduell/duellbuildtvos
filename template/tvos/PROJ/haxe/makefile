@@ -48,8 +48,11 @@ CONFIG := $(CONFIG)-$(HAXE_OS)
 debug_print:
 	@echo "Make $(HAXE_BUILDS)"
 
-LIB_BASE := build/$(CONFIG)/::MAIN::$(DEBUG)
+LIB_BASE := build/$(CONFIG)/lib::MAIN::$(DEBUG)
 LIB_DEST := $(DEBUG)/libHaxeApplication.a
+
+export STATICLIBPREFIX=lib
+export LIBPREFIX=lib
 
 export HXCPP_COMPILE_THREADS := 2
 
