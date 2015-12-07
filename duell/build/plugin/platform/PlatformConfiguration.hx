@@ -97,7 +97,7 @@ typedef PlatformConfigurationData = {
 class PlatformConfiguration
 {
 	public static var _configuration : PlatformConfigurationData = null;
-	private static var _parsingDefines : Array<String> = ["tvos", "cpp"];
+	private static var _parsingDefines : Array<String> = ["apple", "tvos", "cpp"];
 	public static function getData() : PlatformConfigurationData
 	{
 		if (_configuration == null)
